@@ -23,6 +23,18 @@
       </div>
       <div class="sc-user-input--buttons">
         <div class="sc-user-input--button"></div>
+        <button v-if="showPhotos" v-on:click.prevent="_showIndicator('!photo')" class="sc-user-input--button-icon-wrapper" id="showPhoto" tooltip="Photo">
+          <img class="img-indicator-photo" src="artybot/photo.svg" />
+        </button>
+        <button v-if="showMap" v-on:click.prevent="_showIndicator('!map')" class="sc-user-input--button-icon-wrapper" id="showMap" tooltip="Map">
+          <img class="img-indicator-map" src="artybot/local.svg" />
+        </button>
+          <button v-if="showCredits" v-on:click.prevent="_showIndicator('!credits')" class="sc-user-input--button-icon-wrapper" id="showCredits" tooltip="Credits">
+          <img class="img-indicator-credits" src="artybot/lettre_coeur.svg" />
+        </button>
+        <button v-if="showHelp" v-on:click.prevent="_showIndicator('!help')" class="sc-user-input--button-icon-wrapper" id="showHelp" tooltip="Help">
+          <img class="img-indicator-help" src="artybot/aide.svg" />
+        </button>
         <div v-if="showEmoji && !isEditing" class="sc-user-input--button">
           <EmojiIcon :onEmojiPicked="_handleEmojiPicked" :color="colors.userInput.text" />
         </div>
@@ -34,7 +46,7 @@
             <icon-cross />
           </user-input-button>
         </div>
-        <div class="sc-user-input--button">
+        <div class="sc-user-input--button" v-if="showSend">
           <user-input-button @click.native.prevent="_editText" v-if="isEditing" :color="colors.userInput.text" tooltip="Edit">
             <icon-ok />
           </user-input-button>
@@ -59,6 +71,7 @@ import store from "./store/"
 import IconCross from "./components/icons/IconCross.vue";
 import IconOk from "./components/icons/IconOk.vue";
 import IconSend from "./components/icons/IconSend.vue";
+
 
 export default {
   components: {
@@ -90,6 +103,26 @@ export default {
     showEmoji: {
       type: Boolean,
       default: () => false
+    },
+    showPhotos: {
+      type: Boolean,
+      default: () => false
+    },
+    showMap: {
+      type: Boolean,
+      default: () => false
+    },
+    showCredits: {
+      type: Boolean,
+      default: () => false
+    },
+    showHelp: {
+      type: Boolean,
+      default: () => false
+    },
+    showSend: {
+      type: Boolean,
+      default: false
     },
     suggestions: {
       type: Array,
@@ -220,6 +253,10 @@ export default {
     },
     _editFinish(){
       this.store.editMessage = null;
+    },
+    _showIndicator(indicatorName) {
+      console.log("Show ", indicatorName)
+      this.onSubmit({author: 'me', type: 'raw', data: { text: indicatorName }})
     }
   },
   watch: {
@@ -366,5 +403,29 @@ export default {
 
 .icon-file-message {
   margin-right: 5px;
+}
+
+.img-indicator-photo {
+  width: 32px;
+  height: 32px;
+}
+
+.img-indicator-map {
+  width: 32px;
+  height: 32px;
+}
+
+.img-indicator-credits {
+  width: 32px;
+  height: 32px;
+}
+
+.img-indicator-help {
+  width: 32px;
+  height: 32px;
+}
+
+.credit {
+  font-size: 7px !important;
 }
 </style>

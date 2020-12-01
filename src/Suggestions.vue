@@ -36,7 +36,8 @@ export default {
   border: 1px solid;
   border-radius: 15px;
   font-size: 14px;
-  background: inherit;
+  background: white;
   cursor: pointer;
+  border-color: white !important;
 }
 </style>

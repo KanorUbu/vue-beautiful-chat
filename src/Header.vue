@@ -1,6 +1,6 @@
 <template>
   <div class="sc-header" :style="{background: colors.header.bg, color: colors.header.text}">
-    <slot>
+    <slot v-if="showHeader" >
       <img class="sc-header--img" :src="imageUrl" alt="" v-if="imageUrl" />
       <div v-if="!disableUserListToggle" class="sc-header--title enabled" @click="toggleUserList"> {{title}} </div>
       <div v-else class="sc-header--title"> {{title}} </div>
@@ -49,7 +49,11 @@ export default {
     showCloseButton: {
       type: Boolean,
       default: false
-    }
+    },
+    showHeader: {
+      type: Boolean,
+      default: true
+    },
   },
   methods: {
     toggleUserList() {
@@ -66,10 +70,13 @@ export default {
 </script>
 <style scoped>
 .sc-header {
-  min-height: 75px;
+  /*min-height: 75px;*/
+  max-height: 60px;
+  min-height: 60px;
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
-  padding: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
   box-shadow: 0 1px 4px rgba(0,0,0,.2);
   position: relative;
   box-sizing: border-box;
@@ -77,7 +84,7 @@ export default {
 }
 
 .sc-header--img {
-  border-radius: 50%;
+  /*border-radius: 50%;*/
   align-self: center;
   padding: 10px;
 }

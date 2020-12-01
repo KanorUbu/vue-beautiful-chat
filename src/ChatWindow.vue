@@ -6,6 +6,7 @@
       :imageUrl="titleImageUrl"
       :onClose="onClose"
       :colors="colors"
+      :showHeader="showHeader"
       :disableUserListToggle="disableUserListToggle"
       @userList="handleUserListToggle"
     >
@@ -52,6 +53,11 @@
     <UserInput
       v-if="!showUserList"
       :showEmoji="showEmoji"
+      :showPhotos="showPhotos"
+      :showMap="showMap"
+      :showCredits="showCredits"
+      :showHelp="showHelp"
+      :showSend="showSend"
       :onSubmit="onUserInputSubmit"
       :suggestions="getSuggestions()"
       :showFile="showFile"
@@ -77,6 +83,30 @@ export default {
   },
   props: {
     showEmoji: {
+      type: Boolean,
+      default: false
+    },
+    showPhotos: {
+      type: Boolean,
+      default: false
+    },
+    showMap: {
+      type: Boolean,
+      default: false
+    },
+    showCredits: {
+      type: Boolean,
+      default: false
+    },
+    showHelp: {
+      type: Boolean,
+      default: false
+    },
+    showHeader: {
+      type: Boolean,
+      default: true
+    },
+    showSend: {
       type: Boolean,
       default: false
     },
@@ -190,6 +220,7 @@ export default {
   animation: fadeIn;
   animation-duration: 0.3s;
   animation-timing-function: ease-in-out;
+  border: solid black 1px;
 }
 
 .sc-chat-window.closed {
