@@ -5,6 +5,7 @@
       :title="title"
       :colors="colors"
       @close="$emit('close')"
+      :showHeader="showHeader"
       @userList="handleUserListToggle"
     >
       <template>
@@ -50,6 +51,11 @@
       v-if="!showUserList"
       :show-emoji="showEmoji"
       :on-submit="onUserInputSubmit"
+      :showPhotos="showPhotos"
+      :showMap="showMap"
+      :showCredits="showCredits"
+      :showHelp="showHelp"
+      :showSend="showSend"
       :suggestions="getSuggestions()"
       :show-file="showFile"
       :placeholder="placeholder"
@@ -75,6 +81,30 @@ export default {
   },
   props: {
     showEmoji: {
+      type: Boolean,
+      default: false
+    },
+    showPhotos: {
+      type: Boolean,
+      default: false
+    },
+    showMap: {
+      type: Boolean,
+      default: false
+    },
+    showCredits: {
+      type: Boolean,
+      default: false
+    },
+    showHelp: {
+      type: Boolean,
+      default: false
+    },
+    showHeader: {
+      type: Boolean,
+      default: true
+    },
+    showSend: {
       type: Boolean,
       default: false
     },
@@ -177,6 +207,7 @@ export default {
   animation: fadeIn;
   animation-duration: 0.3s;
   animation-timing-function: ease-in-out;
+  border: solid black 1px;
 }
 
 .sc-chat-window.closed {

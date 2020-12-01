@@ -58,6 +58,7 @@
       >
         <slot name="system-message-body" :message="message.data"> </slot>
       </SystemMessage>
+      <RawMessage v-else-if="message.type === 'raw'" :data="message.data" />
     </div>
   </div>
 </template>
@@ -68,6 +69,7 @@ import FileMessage from './messages/FileMessage.vue'
 import EmojiMessage from './messages/EmojiMessage.vue'
 import TypingMessage from './messages/TypingMessage.vue'
 import SystemMessage from './messages/SystemMessage.vue'
+import RawMessage from './messages/RawMessage.vue'
 import chatIcon from './assets/chat-icon.svg'
 
 export default {
@@ -76,7 +78,8 @@ export default {
     FileMessage,
     EmojiMessage,
     TypingMessage,
-    SystemMessage
+    SystemMessage,
+    RawMessage
   },
   props: {
     message: {
@@ -132,7 +135,7 @@ export default {
 
 <style lang="scss">
 .sc-message {
-  width: 300px;
+  width: 97%;
   margin: auto;
   padding-bottom: 10px;
   display: flex;
@@ -164,9 +167,9 @@ export default {
 .sc-message--avatar {
   background-repeat: no-repeat;
   background-size: 100%;
-  background-position: center;
-  min-width: 30px;
-  min-height: 30px;
+  background-position: top;
+  min-width: 50px;
+  min-height: 50px;
   border-radius: 50%;
   align-self: center;
   margin-right: 15px;
@@ -181,7 +184,7 @@ export default {
 
 @media (max-width: 450px) {
   .sc-message {
-    width: 80%;
+    width: 97%;
   }
 }
 

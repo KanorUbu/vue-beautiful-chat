@@ -24,6 +24,12 @@
       :show-confirmation-deletion="showConfirmationDeletion"
       :confirmation-deletion-message="confirmationDeletionMessage"
       :show-header="showHeader"
+      :showPhotos="showPhotos"
+      :showMap="showMap"
+      :showCredits="showCredits"
+      :showHelp="showHelp"
+      :showHeader="showHeader"
+      :showSend="showSend"
       :placeholder="placeholder"
       :show-typing-indicator="showTypingIndicator"
       :colors="colors"
@@ -90,6 +96,30 @@ export default {
       }
     },
     showEmoji: {
+      type: Boolean,
+      default: false
+    },
+    showPhotos: {
+      type: Boolean,
+      default: false
+    },
+    showMap: {
+      type: Boolean,
+      default: false
+    },
+    showCredits: {
+      type: Boolean,
+      default: false
+    },
+    showHelp: {
+      type: Boolean,
+      default: false
+    },
+    showHeader: {
+      type: Boolean,
+      default: true
+    },
+    showSend: {
       type: Boolean,
       default: false
     },
@@ -163,7 +193,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: 'Write a message...'
+      default: 'Aa'
     },
     showTypingIndicator: {
       type: String,
