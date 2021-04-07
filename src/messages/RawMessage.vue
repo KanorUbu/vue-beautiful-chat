@@ -1,7 +1,9 @@
 <template>
-  <div class="sc-message--file">
-    <div class="sc-message--file-text">
-      <p><span v-html="data.text"></span></p>
+  <div class="sc-message--file test_lol" :style="messageColors">
+    <div class="sc-message--file-text" :style="messageColors">
+       <slot :message="data">
+        <p><span v-html="data.text"></span></p>
+        </slot>
     </div>
   </div>
 </template>
@@ -12,7 +14,11 @@ export default {
     data: {
       type: Object,
       required: true
-    }
+    },
+    messageColors: {
+      type: Object,
+      required: true
+    },
   }
 }
 </script>

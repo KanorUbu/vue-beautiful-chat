@@ -38,7 +38,10 @@
           <slot name="system-message-body" :message="message.data">
           </slot>
       </SystemMessage>
-      <RawMessage v-else-if="message.type === 'raw'" :data="message.data" />
+      <RawMessage v-else-if="message.type === 'raw'" :data="message.data" :messageColors="messageColors">
+          <slot name="raw-message-body" :message="message.data">
+          </slot>
+      </RawMessage>
     </div>
   </div>
 </template>
